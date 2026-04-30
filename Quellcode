@@ -1,0 +1,78 @@
+int rot=9;
+int frot=12;
+int gruen=11;
+int fgruen=13;
+int gelb=10;
+int Pause= 1000;
+int Tasterzustand=LOW; 
+int Interruptnummer=1; 
+int PinLDR = A1;   // PIN für den LDR wird festgelegt
+void setup()
+{
+  
+  pinMode(gruen, OUTPUT);
+  pinMode(gelb, OUTPUT);
+  pinMode(rot, OUTPUT);
+  pinMode (frot, OUTPUT);
+  pinMode (fgruen, OUTPUT);
+  Serial.begin(9600);
+  attachInterrupt(Interruptnummer, Tasterabfrage, CHANGE);
+}
+
+void loop()
+{
+  int sensorValue = analogRead(PinLDR);      // SensorWert wird mit Int deklariert und dieser  und dieser dem Analogwert zugeweisen, damit diser vom PC abgelsen werden kann.
+  float volt = sensorValue * (5.0 / 1023.0); // der Volt-Wert wird realistisch umgerechnet
+  Serial.println(volt);      // die Spannungswerte werden digital "erkennbar" gemacht.
+  if (volt > 2.6)            //Wenn die Spannung über 2.6V beträgt, dann sollen die Befehle die in der geschweiften Klammer unter if stehen ausgeführt werden, sonst die Befehle unter else. 
+  { //hell
+    if (Tasterzustand == HIGH)
+    {
+
+      delay (Pause * 2);
+      FAmpel(LOW, HIGH);
+      delay (Pause * 5);
+      FAmpel(HIGH, LOW);
+      delay (Pause * 5);
+      Tasterzustand = LOW;
+    }
+    else
+    {
+      Ampel (HIGH, LOW, LOW);
+      FAmpel(HIGH, LOW);
+      delay(Pause * 2);
+      Ampel (HIGH, HIGH, LOW);
+      delay(Pause * 2);
+      Ampel (LOW, LOW, HIGH);
+      delay(Pause * 5);
+      Ampel (LOW, HIGH, LOW);
+      delay(Pause * 2);
+      Ampel (HIGH, LOW, LOW);
+
+    }
+  } else {
+    // dunkel
+    Ampel(LOW, LOW, LOW);
+    FAmpel(LOW, LOW);
+    digitalWrite (gelb, HIGH);
+    delay(Pause / 2);
+    digitalWrite(gelb, LOW);
+    delay(Pause / 2);
+  }
+
+}
+void Ampel( boolean prot , boolean pgelb, boolean pgruen)
+{
+  digitalWrite (rot, prot);
+  digitalWrite (gelb, pgelb);
+  digitalWrite (gruen, pgruen);
+}
+void FAmpel(boolean Pfrot, boolean Pfgruen)
+{
+  digitalWrite (frot, Pfrot);
+  digitalWrite(fgruen, Pfgruen);
+}
+void Tasterabfrage()
+{
+  Tasterzustand = HIGH;
+}
