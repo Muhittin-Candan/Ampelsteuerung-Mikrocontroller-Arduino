@@ -15,3 +15,6 @@ Aufgabenstellung
     3. Bauelemente siehe Steckplan
     (5x 220 Widerstände, 2x Grüne LEDs, 2x Rote LEDs, 1x Gelbes LED, 1x Taster, 
 	2x 1k Wiederstände, 1x LDR/lichtempfindlicher elektrischer Widerstand)
+
+
+Bilder: https://drive.google.com/drive/folders/11YRovw-GNwGdgaAYZIyQFV8HTInxzn2Y
