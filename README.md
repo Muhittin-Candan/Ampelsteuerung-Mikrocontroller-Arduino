@@ -18,4 +18,7 @@ Aufgabenstellung
 
 	02.2017, OSZ Tiem
 
-Bilder: https://drive.google.com/drive/folders/11YRovw-GNwGdgaAYZIyQFV8HTInxzn2Y
+<img width="975" height="1764" alt="ssss" src="https://github.com/user-attachments/assets/ca665c99-108b-4424-88fd-ac4d23af30c5" />
+
+<img width="996" height="1275" alt="aa" src="https://github.com/user-attachments/assets/c1c364c5-d108-4343-8b08-b781555db9a3" />
+
